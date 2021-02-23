@@ -1,0 +1,15 @@
+body{
+    font-family: 'Barlow' ;
+    background-color: rgb(255, 132, 132);
+    margin: 0%;
+    text-decoration: none;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+#entranceText{
+    text-align: center;
+    font-size: 100px;
+    margin-top: 15%;
+}
