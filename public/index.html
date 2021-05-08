@@ -1,30 +1,114 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-    <head>
-        <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
-        <link rel="icon" href="Images/main_logo.gif">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tracking Link</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        <script src="script.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <h1 id="entranceText">Welcome!</h1>
-        <div>
-            
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+
+    <!-- Main Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+    <!-- Firebase UI -->
+
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.0/firebase-ui-auth.css" />
+
+    <!-- Firebase Products -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script> 
+    
+
+  </head>
+  <body>
+
+    <div id="topBar" class="white-bg-color box-shadow">
+      <h1 id="namedText" class="sub-header">Please Sign in!</h1>
+      <button onclick="signOutUser()" id="signOutButton" class=" sub-header white-bg-color">Sign Out</button>
+    </div>
+    <!-- Sign In -->
+    <div id="signInPage" class="show full-page">
+
+      <div id="signInMainDiv" class="rounded-corner box-shadow">
+        <h1 class="centered header">Tracking Links</h1>
+
+          <!-- Firebase UI -->
+        <div id="firebaseui-auth-container"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <div id="loader">Loading...</div>
+
+    <!-- Assignment View -->
+    <div id="assignmentViewPage" class="hide full-page">
+
+      <div id="assignmentArea">
+      </div>
+      
+      <!-- Creation Assignment Button -->
+      <div onclick="showCreationCard()" id="showCard" class="rounded-corner">
+        <button id="showCreationButton" class="white-bg-color box-shadow">+</button>
+        <h2 id="showCreationText" class="box-shadow">---.. Create an Assignment</h2>
+      </div>
+      <!-- Pop Up Thing -->
+      <div id="popUpDiv" class="box-shadow hide">
+        <p id="popUp">Copied Text</p>
+      </div>
+
+      <!-- Creation Tab Overlay -->
+      <div id="creationTab" class="hide">
+          <div class="white-bg-color rounded-corner box-shadow sub-header" id="creationDiv">
+              <h1>Create a new Assignment
+                <button id="creationTabExitButton" onclick="hideCreationCard()">+</button>
+              </h1>
+              <div>
+                Title:
+                <input id="creationTitle">
+              </div>
+              <div class="slight-break">
+                Link:
+                <input id="creationLink">
+              </div>
+              <div class="slight-break">
+                Require accessors to provide name: 
+                <input type="checkbox" id="creationRequireNames" style="width: 20px; height: 20px; margin-top: 5px;" checked>
+              </div>
+              <button onclick="createCard()" id="createAssignmentButton" class="box-shadow rounded-corner default-size">Create</button>
+          </div>
+      </div>
+      <div id="statTab" class="hide">
+        <div class="white-bg-color rounded-corner box-shadow sub-header" id="statDiv">
+          <h1>Stats for <span id="statsTitle"></span>
+            <button id="creationTabExitButton" onclick="hideStatCard()">+</button>
+          </h1>
+          <div id="statInfoDiv">
+            <p id="statDateCreated" class="statText"></p>
+            <p id="statUniqueAccessors" class="statText"></p>
+
+            <a id="statOriginalLink" class="statText" target="_blank"></a>
+            <br>
+            <a id="statCustomLink" class="statText" target="_blank"></a>
+
+          </div>
+          <div id="statPeopleDiv">
+            <div class="statRow" style="box-shadow: 0 8px 6px -6px rgb(0, 0, 0, .3); height: 25px;background-color: white;">
+              <div class="statColumn" style="font-weight:bold">Date</div>
+              <div class="statColumn"style="font-weight:bold">Name</div>
+              <div class="statColumn"style="font-weight:bold">Times Accessed</div>
+            </div>
+            <div id="statScroller">
+              
+            </div>
+          </div>
         </div>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="/__/firebase/8.2.1/firebase-app.js"></script>
+      </div>
+      <input id="copiedText" style="opacity: 0;">
 
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#available-libraries -->
-        <script src="/__/firebase/8.2.1/firebase-analytics.js"></script>
 
-        <!-- Initialize Firebase -->
-        <script src="/__/firebase/init.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
-
-<!-- $FIREBASE_TOKEN -->
-    </body>
+    </div>
+    
+  </body>
 </html>

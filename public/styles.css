@@ -1,15 +1,349 @@
 body{
-    font-family: 'Barlow' ;
-    background-color: rgb(255, 132, 132);
+    background-color: #81a1b5;
+
     margin: 0%;
     text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
 }
 html {
     scroll-behavior: smooth;
 }
-
+h1{
+    margin: 0px;
+}
+h2{
+    margin: 0px;
+}
+a{
+    color: black;
+}
+#loader{
+    position: fixed;
+    font-size: 60px; 
+    width: 100vw;
+    padding-top: 40vh;
+    text-align: center;
+    height: 60vh;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+    z-index: 10;
+}
 #entranceText{
     text-align: center;
     font-size: 100px;
     margin-top: 15%;
+}
+#topBar{
+    position: fixed;
+    width: 100vw;
+    height: 7vh;
+}
+.full-page{
+    position: absolute;
+    width: 100%;
+    height: 93vh;
+    top: 7vh;
+    left: 0vw;
+}
+#signInMainDiv{
+    width: 60vw;
+    margin-left: 18vw;
+    margin-top: 20vh;
+    background-color: white;
+    padding: 2vw;
+}
+#showCard{
+    width: 7.5vh;
+    height: 7.5vh;
+    font-size: 25px;
+    position: fixed;
+    top: 85vh;
+    left: 5vw;
+    transition: width .5s ease-in-out;
+}
+#showCard:hover{
+    width: 45vw;
+}
+#showCreationButton{
+    position: relative;
+
+    font-size: 6.5vh;
+    outline: none;
+    border: none;
+    height: 7.5vh;
+    width: 7.5vh;
+    border-radius: 3.75vh;
+    float: left;
+    z-index: 5;
+}
+
+#showCreationText{
+    position: relative;
+    top: -7.5vh;
+    border-radius: 3.75vh;
+    background-color: white;
+    padding-top: 1.25vh;
+    padding-bottom: 1.25vh;
+    z-index: 4;
+    font-size: 3.75vh;
+    width: 100%;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+#creationTab{
+    position: fixed;
+    top: 7vh;
+    left: 0vw;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(50, 50, 50, .2);
+}
+#createAssignmentButton{
+    outline: none;
+    border: 1px rgb(0,0,0,.5) outset;
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;    
+}
+#creationDiv{
+    width: 56vw;
+    padding: 2vw;
+    margin-left: 20vw;
+    margin-top: 5vh;
+}
+#statTab{
+    position: fixed;
+    top: 7vh;
+    left: 0vw;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(50, 50, 50, .2);
+}
+#statDiv{
+    width: 66vw;
+    padding: 2vw;
+    margin-left: 15vw;
+    margin-top: 5vh;
+    height: 50vh;
+
+}
+#statInfoDiv{
+    width: 40%;
+    margin-right: 5%;
+    float: left;
+    font-size: 35px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+#statPeopleDiv{
+    width: 55%;
+    float: right;
+}
+#statScroller{
+    height: 35vh;
+    overflow-y: scroll;
+    float: left;
+    width: 100%;
+}
+
+#creationTabExitButton{
+    float: right;
+    outline: none;
+    border: none;
+
+    font-size: 70px;
+    transform: rotate(45deg);
+
+    background-color: white;
+}
+#promptArrow{
+    position: absolute;
+    height: 50vh;
+    top: 35vh;
+    left: 15.5vw;
+}
+#promptTitle{
+    position: absolute;
+    top: 20vh;
+    font-size: 10vh;
+    width: 90vw;
+    left: 5vw;
+    text-align: center;
+}
+.defaultAssignmentCard{
+    width: 46vw;
+    /* height: 15vh; */
+    margin-top: 3vh;
+    margin-left: 25vw;
+    padding: 2vw;
+
+    /* Makes text not overflow */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+#namedText{
+    padding-right: 2vw;
+    margin: 0px !important;
+    padding: 1vh;
+    padding-left: 4vw;
+    float: left;
+}
+#signOutButton{
+    height: 100%;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    width: auto;
+    float: right;
+    background-color: rgb(255,255,255);
+    transition: background-color .5s;
+    outline: none;
+    border: none;
+}
+
+#signOutButton:hover{
+    background-color: rgb(230,230,230);
+}
+#popUpDiv{
+    position: fixed;
+    left: 10vw;
+    width: 80vw;
+    border-radius: 5px;
+
+}
+.green{
+    background-color: green;
+}
+.red{
+    background-color: red;
+}
+#popUp{
+    padding: 1vh;
+    margin: 0px;
+    text-align: center;
+    color: white;
+}
+.popUp{
+    animation: comeUp 2s ease-in-out;
+    opacity: 0;
+    top: 95vh;
+
+}
+@keyframes comeUp{
+    0%{
+        opacity: 0;
+        top: 95vh;
+        display: inline;
+    }
+    5%{
+        opacity: 1;
+        top: 90vh;
+    }
+    95%{
+        opacity: 1;
+        top: 90vh;
+    }
+    100%{
+        opacity: 0;
+        top: 95vh;
+        display: inline;
+    }
+}
+.firebaseui-container.mdl-card{
+    box-shadow: none;
+}
+.hover{
+    background-color: rgb(245,245,245);
+    transition: background-color .25s;
+
+}
+.hover:hover{
+    background-color: rgb(230,230,230);
+}
+.assignment-button{
+    padding: .25vw;
+    margin-right: 1vw;
+    border: 1px rgb(0,0,0,.5) outset;
+
+}
+.rounded-corner{
+    border-radius: 10px;
+    outline: none;
+    border: none;
+}
+.order-div{
+    float: right;
+    width: 45px;
+}
+.box-shadow{
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.white-bg-color{
+    background-color: white;
+    opacity: 1;
+    z-index: 5;
+}
+.statText{
+    font-size: 30px;
+    
+
+}
+.bold{
+    font-weight: bold;
+}
+.show{
+    display: inline;
+}
+.hide{
+    display: none;
+}
+.centered{
+    text-align: center;
+}
+.slight-break{
+    margin-top: 10px;
+}
+.header{
+    font-size: 60px;
+}
+.sub-header{
+    font-size: 30px;
+}
+.default-size{
+    font-size: 25px;
+}
+.stat-table-width{
+    width: 33%;
+    margin: 0px;
+}
+.statColumn{
+    width: 33%;
+    float: left;
+    font-size: 20px;
+
+}
+.statRow{
+    width: 100%;
+}
+.fade{
+    animation: fade .1s ease-in;
+    opacity: 0;
+}
+.flip{
+    transform: rotate(180deg);
+}
+.arrow-img{
+    background-color: transparent;
+}
+@keyframes fade{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
 }

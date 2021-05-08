@@ -1,0 +1,40 @@
+body{
+    font-family: 'DM Sans', sans-serif;
+}
+#mainDiv{
+    width: 50vw;
+    margin-left: 25vw;
+    margin-top: 20vh
+}
+#title{
+    text-align: center;
+    font-size: 60px;
+}
+#otherOption{
+    font-size: 60px; 
+    width: 100vw;
+    margin-top: 40vh;
+    text-align: center;
+    display: none;   
+    position:relative;
+}
+#name{
+    height: 10vh;
+    width: 35vw;
+    margin-left: 5.5vw;
+    font-size: 40px;
+    padding: 2vw;
+    border-radius: 10px;
+    text-align: center;
+}
+#continueButton{
+    width: 30vw;
+    text-align: center;
+    margin-left: 10vw;
+    padding: 1vw;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 30px;
+    margin-top: 5vh;
+}

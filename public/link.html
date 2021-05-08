@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tracking Link</title>
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+
+    <!-- Main Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+    <!-- Firebase UI -->
+
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.0/firebase-ui-auth.css" />
+
+    <!-- Firebase Products -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script> 
+    
+
+  </head>
+  <body onload="onPageLoad()">
+    
+    
+    <script src="script2.js"></script>
+    <div id="mainDiv">
+      <h1 id="title">Enter your name<br> to continue:</h1>
+      <input id="name">
+      <br>
+      <button onclick="continueButton()" id="continueButton">Continue</button>
+    </div>
+
+    <div id="otherOption">Loading...</div>
+</html>
