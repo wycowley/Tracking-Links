@@ -4,6 +4,7 @@ body{
     margin: 0%;
     text-decoration: none;
     font-family: 'DM Sans', sans-serif;
+    overflow-y: auto;
 }
 html {
     scroll-behavior: smooth;
@@ -201,6 +202,7 @@ a{
     float: right;
     background-color: rgb(255,255,255);
     transition: background-color .5s;
+    display: none;
     outline: none;
     border: none;
 }

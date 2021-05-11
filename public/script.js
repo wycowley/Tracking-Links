@@ -54,9 +54,9 @@ var uiConfig = {
   //   firebase.auth.PhoneAuthProvider.PROVIDER_ID
   ],
   // Terms of service url.
-  tosUrl: '<your-tos-url>',
+  tosUrl: 'tos.html',
   // Privacy policy url.
-  privacyPolicyUrl: '<your-privacy-policy-url>'
+  privacyPolicyUrl: 'privacypolicy.html'
 };
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -65,7 +65,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     document.getElementById("assignmentViewPage").className = document.getElementById("assignmentViewPage").className.replace("hide", "show");
     document.getElementById("namedText").innerHTML = user.displayName;
     // document.getElementById('loader').style.display = 'none';
-    
+    document.getElementById("signOutButton").style.display = "inline";
 
     newUser = user
     console.log(user.displayName+" "+user.uid);
@@ -100,7 +100,10 @@ function signOutUser() {
   firebase.auth().signOut().then(function() {
       // Sign-out successful.
       console.log("successful sign out");
+      document.getElementById("signOutButton").style.display = "none";
+
       location.reload();
+
 
     }).catch(function(error) {
       console.log(error);
@@ -272,6 +275,9 @@ function deleteCard(id){
 }
 
 function lowerOrder(id, order){
+  if(order==1){
+    return;
+  }
     db.collection("users").doc(newUser.uid).collection("assignments").get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
         if(doc.data().order+1==order){
@@ -292,7 +298,10 @@ function lowerOrder(id, order){
     })
   
 }
-function raiseOrder(id, order){
+function raiseOrder(id, order, totalLength){
+  if(order==totalLength-1){
+    return;
+  }
   db.collection("users").doc(newUser.uid).collection("assignments").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
       if(doc.data().order-1==order){
@@ -360,13 +369,19 @@ function refreshAllCards(){
       value.data().order = j;
       console.log(value.data().order+" "+j);
       var title = document.createElement("h1")
-      title.innerHTML = value.data().date+", "+value.data().title
+      title.innerHTML = value.data().date+", "+value.data().title;
       title.style.width = "80%"
 
       var link = document.createElement("a");
       link.className = "default-size slight-break bold";
       link.innerHTML = value.data().link;
-      link.href = value.data().link;
+      var links = value.data().link
+      links.replace("https://","");
+      links.replace("http://","");
+      links.replace("www.","");
+      links = "https://"+links
+      link.href = links;
+      link.target = "_blank"
 
       var uniqueAccessors = document.createElement("h2")
       uniqueAccessors.className = "default-size slight-break"
@@ -375,7 +390,7 @@ function refreshAllCards(){
       var copyLink = document.createElement("button")
       copyLink.id = "copyLinkButton"
       copyLink.className = "hover assignment-button rounded-corner box-shadow default-size slight-break"
-      copyLink.innerHTML = "Copy Link"
+      copyLink.innerHTML = "Copy Custom Link"
       copyLink.onclick = function () {
         /* Get the text field */
         var copyText = document.getElementById("copiedText");
@@ -417,7 +432,7 @@ function refreshAllCards(){
       var ascendButton = document.createElement("button")
       ascendButton.className = "rounded-corner arrow-img"
       ascendButton.onclick = function() {
-        raiseOrder(value.id, value.data().order)
+        raiseOrder(value.id, value.data().order, arrayOfEverything.length)
       }
       var descendButton = document.createElement("button")
       descendButton.className = "rounded-corner arrow-img"
